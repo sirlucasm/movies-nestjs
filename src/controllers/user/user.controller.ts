@@ -1,10 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { CacheKey, Controller, Get } from '@nestjs/common';
+import { UserService } from 'src/services/user/user.service';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
+  constructor (private userService: UserService) {}
+
+  @CacheKey('user')
   @Get()
   async allUsers() {
-    console.log('oioi');
-    return { data: 'ola' };
+    return await this.userService.allUsers();
   }
 }

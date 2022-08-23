@@ -1,7 +1,9 @@
 import {
   Module,
   CacheModule,
+  CacheInterceptor,
 } from "@nestjs/common";
+import { APP_INTERCEPTOR } from "@nestjs/core";
 import * as redisStore from 'cache-manager-ioredis';
 
 @Module({
@@ -11,12 +13,18 @@ import * as redisStore from 'cache-manager-ioredis';
         store: redisStore,
         host: process.env.REDIS_HOST,
         port: 6379,
-        ttl: 60 * 3600 * 1000
+        ttl: 10
       })
     })
   ],
   exports: [
     RedisCacheModule
+  ],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: CacheInterceptor
+    }
   ]
 })
 

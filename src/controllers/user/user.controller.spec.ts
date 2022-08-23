@@ -12,7 +12,7 @@ describe('UserController', () => {
     controller = module.get<UserController>(UserController);
   });
 
-  describe('root', () => {
+  describe('list all users', () => {
     it('should return "Hello World!"', () => {
       expect(controller.allUsers()).toBe([]);
     });
