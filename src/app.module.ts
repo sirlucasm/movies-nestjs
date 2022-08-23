@@ -6,7 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmAsyncConfig } from './config/typeorm.config';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth.module';
-import { AuthService } from './services/auth/auth.service';
+import { MovieModule } from './modules/movie.module';
+import { MovieService } from './services/movie/movie.service';
 
 @Module({
   imports: [
@@ -14,8 +15,10 @@ import { AuthService } from './services/auth/auth.service';
     RedisCacheModule,
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     UserModule,
-    AuthModule
+    AuthModule,
+    MovieModule
   ],
   controllers: [AppController],
+  providers: [MovieService],
 })
 export class AppModule {}
