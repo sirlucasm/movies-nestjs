@@ -25,6 +25,6 @@ describe('UserController', () => {
   });
 
   it('should return User array', async () => {
-    expect(await userController.allUsers()).toHaveLength(1);
+    expect(await userController.index()).toHaveLength(1);
   });
 });

@@ -13,7 +13,7 @@ import * as redisStore from 'cache-manager-ioredis';
         store: redisStore,
         host: process.env.REDIS_HOST,
         port: 6379,
-        ttl: 10
+        ttl: 15
       })
     })
   ],

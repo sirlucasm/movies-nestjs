@@ -32,6 +32,8 @@
     "bcryptjs": "^2.4.3",
     "cache-manager": "^4.1.0",
     "cache-manager-ioredis": "^2.1.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     "dotenv": "^16.0.1",
     "ioredis": "^5.2.2",
     "pg": "^8.7.3",
