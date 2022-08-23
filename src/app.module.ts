@@ -18,7 +18,6 @@ import { MovieService } from './services/movie/movie.service';
     AuthModule,
     MovieModule
   ],
-  controllers: [AppController],
-  providers: [MovieService],
+  controllers: [AppController]
 })
 export class AppModule {}

@@ -7,6 +7,9 @@ export class Movie {
   id: string;
 
   @Column()
+  title: string;
+
+  @Column()
   plot: string;
 
   @Column()
@@ -34,7 +37,7 @@ export class Movie {
   runtime: string;
 
   @Column({ type: 'timestamp', nullable: true })
-  dvd: string;
+  dvd_date: Date;
 
   @Column()
   country: string;

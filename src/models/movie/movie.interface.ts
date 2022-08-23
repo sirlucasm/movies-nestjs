@@ -5,6 +5,7 @@ export enum Type {
 
 export interface IMovie {
   id: string;
+  title: string;
   plot: string;
   actors: string;
   director: string;
@@ -14,7 +15,7 @@ export interface IMovie {
   type: string;
   year: string;
   runtime: string;
-  dvd?: string;
+  dvd_date?: Date;
   country: string;
   created_at: Date;
   updated_at: Date;
