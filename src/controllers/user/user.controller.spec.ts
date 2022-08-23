@@ -1,20 +1,30 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { UserController } from './user.controller';
+import { UserService } from '../../services/user/user.service';
+import { User } from 'src/models/user/user.entity';
 
 describe('UserController', () => {
-  let controller: UserController;
+  let userController: UserController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UserController],
+      providers: [
+        UserService,
+        {
+          provide: getRepositoryToken(User),
+          useFactory: () => ({
+            find: jest.fn(() => [])
+          })
+        }
+      ]
     }).compile();
 
-    controller = module.get<UserController>(UserController);
+    userController = module.get<UserController>(UserController);
   });
 
-  describe('list all users', () => {
-    it('should return "Hello World!"', () => {
-      expect(controller.allUsers()).toBe([]);
-    });
+  it('should return User array', async () => {
+    expect(await userController.allUsers()).toHaveLength(1);
   });
 });

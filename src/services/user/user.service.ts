@@ -9,7 +9,7 @@ export class UserService {
     @InjectRepository(User) private repository: Repository<User>
   ) {}
 
-  async allUsers() {
+  async find() {
     return await this.repository.find();
   }
 }

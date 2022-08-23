@@ -8,6 +8,6 @@ export class UserController {
   @CacheKey('user')
   @Get()
   async allUsers() {
-    return await this.userService.allUsers();
+    return await this.userService.find();
   }
 }
