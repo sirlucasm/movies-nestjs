@@ -1,9 +1,9 @@
-import { IsEmail, IsNotEmpty, IsString, Max, Min } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, Length, Min } from 'class-validator';
 
 export class CreateUserSchema {
   @IsString()
   @IsNotEmpty()
-  @Min(3)
+  @Length(3, 14)
   name: string;
 
   @IsEmail()
@@ -11,13 +11,13 @@ export class CreateUserSchema {
   email: string;
 
   @IsNotEmpty()
-  @Min(6)
+  @Length(6)
   password: string;
 }
 
 export class UpdateUserSchema {
   @IsString()
-  @Min(3)
+  @Length(3, 14)
   name: string;
 
   @IsEmail()

@@ -1,18 +1,18 @@
 import { Entity, Column, CreateDateColumn, UpdateDateColumn, BeforeInsert, PrimaryGeneratedColumn } from 'typeorm';
-import bcrypt from 'bcryptjs';
+import { hashSync } from 'bcryptjs';
 
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar', length: 300 })
+  @Column({ type: 'varchar', length: 14 })
   name: string;
 
-  @Column({ type: 'varchar', length: 300 })
+  @Column({ type: 'varchar', unique: true })
   email: string;
 
-  @Column({ type: 'varchar', length: 300 })
+  @Column({ type: 'varchar' })
   password: string;
 
   @CreateDateColumn()
@@ -22,7 +22,7 @@ export class User {
   updated_at: Date;
 
   @BeforeInsert()
-  async hashPassword() {
-    this.password = await bcrypt.hash(this.password, 10);
+  hashPassword() {
+    this.password = hashSync(this.password, 10)
   }
 }
