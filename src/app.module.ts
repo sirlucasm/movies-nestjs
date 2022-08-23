@@ -3,12 +3,14 @@ import { RedisCacheModule } from './providers/redis/redis.module';
 import { UserModule } from './modules/user/user.module';
 import { AppController } from './controllers/app/app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { typeOrmConfig } from './config/typeorm.config';
+import { typeOrmAsyncConfig } from './config/typeorm.config';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     RedisCacheModule,
-    TypeOrmModule.forRoot(typeOrmConfig),
+    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     UserModule
   ],
   controllers: [AppController],

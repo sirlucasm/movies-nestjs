@@ -1,26 +1,28 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { TypeOrmModuleAsyncOptions, } from '@nestjs/typeorm';
 
 const isProduction = () => process.env.NODE_ENV != 'development';
 
-const typeOrmConfig: TypeOrmModuleOptions = {
-  type: 'postgres',
+export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
+  useFactory: async () => ({
+    type: 'postgres',
 
-  host: process.env.POSTGRES_HOST,
-  port: parseInt(process.env.POSTGRES_PORT),
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DB,
+    host: process.env.POSTGRES_HOST,
+    port: parseInt(process.env.POSTGRES_PORT),
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB,
 
-  entities: [__dirname + '/../**/*.entity.{ts,js}'],
-  autoLoadEntities: true,
+    entities: [__dirname + '/../**/*.entity.{ts,js}'],
 
-  migrationsTableName: 'migrations',
-  migrations: [__dirname + '/../database/migrations/*.ts'],
+    migrationsTableName: 'migrations',
+    migrations: [__dirname + '/../database/migrations/*{.ts,.js}'],
 
-  ssl: isProduction(),
+    ssl: isProduction(),
 
-  synchronize: true,
-}
+    cli: {
+      migrationsDir: __dirname + '/../database/migrations'
+    },
 
-
-export { typeOrmConfig };
+    synchronize: true,
+  })
+};
