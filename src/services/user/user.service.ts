@@ -12,7 +12,7 @@ export class UserService {
 
   async findAll() {
     return await this.repository.find({
-      select: ['name', 'email', 'created_at', 'updated_at']
+      select: ['id', 'name', 'email', 'created_at', 'updated_at']
     });
   }
 
