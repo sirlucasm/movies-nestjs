@@ -29,7 +29,7 @@ export class AuthService {
   async authenticate(user: User) {
     const payload = { email: user.email, sub: user.id };
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign(payload, { privateKey: ""+process.env.JWT_PRIVATE_KEY }),
       user
     };
   }

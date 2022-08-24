@@ -24,8 +24,14 @@ describe('UserController', () => {
     userController = module.get<UserController>(UserController);
   });
 
-  it('should return User array', async () => {
-    const users = await userController.index();
-    expect(users).toEqual([]);
+  it('should be defined', () => {
+    expect(userController).toBeDefined();
+  });
+
+  describe('findAll', () => {
+    it('should return an array of User', async () => {
+      const users = await userController.index();
+      expect(users).toEqual([]);
+    });
   });
 });
