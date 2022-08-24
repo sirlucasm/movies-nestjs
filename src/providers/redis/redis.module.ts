@@ -13,7 +13,10 @@ import * as redisStore from 'cache-manager-ioredis';
         store: redisStore,
         host: process.env.REDIS_HOST,
         port: process.env.REDIS_PORT,
-        tls: false,
+        password: process.env.REDIS_PASSWORD,
+        tls: {
+          rejectUnauthorized: false
+        },
         ttl: 15
       })
     })
