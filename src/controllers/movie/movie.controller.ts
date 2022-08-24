@@ -1,9 +1,10 @@
 import { Body, CacheKey, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CreateMovieSchema } from 'src/schemas/movie.schema';
 import { MovieService } from 'src/services/movie/movie.service';
 
+@ApiTags('movies')
 @UseGuards(AuthGuard('jwt'))
 @Controller('movies')
 export class MovieController {

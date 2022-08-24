@@ -11,10 +11,11 @@ import {
   UseGuards
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserSchema, UpdateUserSchema } from 'src/schemas/user.schema';
 import { UserService } from 'src/services/user/user.service';
 
+@ApiTags('users')
 @Controller('users')
 export class UserController {
   constructor (private userService: UserService) {}

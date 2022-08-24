@@ -19,7 +19,6 @@ async function bootstrap() {
     .setTitle('Movies Nestjs')
     .setDescription('Movies Catalogs API with NestJS application')
     .setVersion('1.0')
-    .addTag('nestjs, movies, catalogs, api')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
