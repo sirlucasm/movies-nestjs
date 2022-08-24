@@ -12,9 +12,7 @@ describe('UserService', () => {
         UserService,
         {
           provide: getRepositoryToken(User),
-          useValue: {
-            find: jest.fn()
-          }
+          useValue: {}
         }
       ],
     }).compile();
