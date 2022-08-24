@@ -4,7 +4,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-      target: ${NODE_ENV}
+      target: development
     volumes:
       - .:/usr/src/app
     env_file:

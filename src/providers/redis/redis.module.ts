@@ -5,19 +5,14 @@ import {
 } from "@nestjs/common";
 import { APP_INTERCEPTOR } from "@nestjs/core";
 import * as redisStore from 'cache-manager-ioredis';
+import { RedisOptions } from "./redis.option";
 
 @Module({
   imports: [
     CacheModule.registerAsync({
       useFactory: () => ({
         store: redisStore,
-        host: process.env.REDIS_HOST,
-        port: process.env.REDIS_PORT,
-        password: process.env.REDIS_PASSWORD,
-        tls: {
-          rejectUnauthorized: false
-        },
-        ttl: 15
+        ...RedisOptions()
       })
     })
   ],
