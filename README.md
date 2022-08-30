@@ -48,6 +48,6 @@ $ yarn test:watch
 
 ## Server Info
 Root:
-[http://localhost:8080/api/](http://localhost:8080/api/v1/docs)
+[http://localhost:8080/api/](http://localhost:8080/api/)
 Swagger doc.:
 [http://localhost:8080/api/v1/docs](http://localhost:8080/api/v1/docs)
